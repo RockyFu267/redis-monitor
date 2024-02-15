@@ -31,11 +31,11 @@ func main() {
 	go func() {
 		for {
 			now := time.Now().Format(time.RFC3339)
-			err := clusterClient.Set(ctx, "a", now, 0).Err()
+			err := clusterClient.Set(ctx, "fuaotest", now, 0).Err()
 			if err != nil {
-				log.Printf("Error updating key 'a': %v", err)
+				log.Printf("Error updating key 'fuaotest': %v", err)
 			} else {
-				log.Printf("Updated key 'a' with value: %s", now)
+				log.Printf("Updated key 'fuaotest' with value: %s", now)
 			}
 			time.Sleep(time.Second)
 		}
@@ -44,12 +44,11 @@ func main() {
 	// 每秒读取名为 "a" 的键的值
 	go func() {
 		for {
-			val, err := clusterClient.Get(ctx, "a").Result()
+			val, err := clusterClient.Get(ctx, "fuaotest").Result()
 			if err != nil {
-				log.Printf("Error reading key 'a': %v", err)
+				log.Printf("Error reading key 'fuaotest': %v", err)
 			} else {
-				log.Printf("Value of key 'a' is: %s", val)
-				fmt.Println(val)
+				log.Printf("Value of key 'fuaotest' is: %s", val)
 			}
 			time.Sleep(time.Second)
 		}
