@@ -1,0 +1,6 @@
+redis_cluster:
+  addresses:
+    - "redis-cluster-node1:6379"
+    - "redis-cluster-node2:6379"
+    - "redis-cluster-node3:6379"
+  password: "abc123456"
